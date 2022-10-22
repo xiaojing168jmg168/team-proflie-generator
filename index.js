@@ -11,6 +11,12 @@ let employeesArr = [];
 //all employee's questions
 const questions = [
         {
+        type: "list",
+        name: "role",
+        message: "Which type of team member would you like to add?",
+        choices: ["Manager", "Engineer", "Intern","I don't want to add any more team members."]
+        },
+        {
         type: "input",
         name: "name",
         message: "What is the name of this employee?"
@@ -24,12 +30,6 @@ const questions = [
         type: "input",
         name: "email",
         message: "What is this employee email?"
-        },
-        {
-        type: "list",
-        name: "role",
-        message: "Which type of team member would you like to add?",
-        choices: ["Manager", "Engineer", "Intern","I don't want to add any more team members."]
         },
         ];
 
@@ -100,12 +100,12 @@ employeesArr.push(employee);
 }
 
 else{
-console.log("Your generate team in ./dist");
-generateHtml();
+
+return;
 }
 });
 };
 
 //const profiles = employeesArr.map();
 
-newEmployee();
+console.log(newEmployee());
