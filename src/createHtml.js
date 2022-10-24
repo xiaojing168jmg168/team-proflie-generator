@@ -5,7 +5,7 @@ const internCard = require('./internCard');
 //filter every single employee ,then push to html page
 const generateTeam = (cards)=>{
   const html = [];
-if(Array.isArray(cards)){
+
   html.push(
 
     cards
@@ -22,15 +22,14 @@ if(Array.isArray(cards)){
       .filter((employee) => employee.getRole() === "Intern")
       .map((intern) => internCard(intern))
   );
-}else{
-console.log('cards is not an array');
-}
+
   return html.join("");
 };
 
 
 
-const ceateHtml = (cards) => {`
+const ceateHtml = (cards) => {
+return`
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +43,7 @@ const ceateHtml = (cards) => {`
    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
 
   <link rel="stylesheet" href="./dist/style.css" />
-  <title>Weather Dashboard</title>
+  <title>Team Profile Generator</title>
 </head>
 
 <body class="container">
