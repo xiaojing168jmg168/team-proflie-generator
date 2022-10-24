@@ -7,8 +7,6 @@ const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 const createHtml = require('./src/createHtml.js');
 
-const { inherits } = require('util');
-
 
 //employees array
 let employeesArr = [];
@@ -66,68 +64,59 @@ const internQuestions = [
 
 //create new employee
 const newEmployee = async() => {
-await inquirer.prompt(questions)
-.then((response) => {
-let name = response.name;
-let id = response.id;
-let email = response.email;
-let role = response.role;
-let officeNumber;
-let github;
-let school;
+      
+       const answers = await inquirer.prompt(questions);
+       
+        //if manager slecte answer these set of questions
+        if(answers.role === "Manager"){
+                const managerAns = await inquirer.prompt(managerQuestions);
+                let employee = new Manager(answers.name, answers.id, answers.email, managerAns.officeNumber);
+                employeesArr.push(employee);
+               
+                }
+        //if engineer slecte answer these set of questions
+        else if(answers.role === "Engineer"){
+                const engineerAns = await inquirer.prompt(engineerQuestions);
+                let employee = new Engineer(answers.name, answers.id, answers.email, engineerAns.github);
+                employeesArr.push(employee);
+               
+                }
+        //if intern slecte answer these set of questions
+        else if(answers.role === "Intern"){
+                const internAns = await inquirer.prompt(internQuestions);
+                let employee = new Intern(answers.name, answers.id, answers.email, internAns.school);
+                employeesArr.push(employee);
+               
+                }
+console.log(employeesArr);
 
-if(role === "Manager"){
-inquirer.prompt(managerQuestions)
-.then((response) => {
-officeNumber = response.officeNumber;
-let employee = new Manager(name, id, email, officeNumber);
-employeesArr.push(employee);
-
-});
-}
-
-else if(role === "Engineer"){
-inquirer.prompt(engineerQuestions)
-.then((response) => {
-github = response.github;
-let employee = new Engineer(name, id, email, github);
-employeesArr.push(employee);
-
-});
-}
-
-else if(role === "Intern"){
-inquirer.prompt(internQuestions)
-.then((response) => {
-school = response.school;
-let employee = new Intern(name, id, email, school);
-employeesArr.push(employee);
-});
-}
-});
-};
+ };
+        
 
 //async function prompt add more member or create team
 const addMemberOrCreateTeam = async() =>{
-     await newEmployee();
-const addMembers = await inquirer
-.prompt([
-{
-name: "addMember",
-type: "list",
-choices: ["Add a new member", "Create team"],
-message: "What would you like to do next?"
-}
-])
-if(addMembers.addMember === "Add a new member"){
-return newEmployee();
-}
-return writeHtml();
-}
+        await newEmployee();
+        const addMembers = await inquirer
+        .prompt([
+        {
+        name: "addMember",
+        type: "list",
+        choices: ["Add a new member", "Create team"],
+        message: "What would you like to do next?"
+        }
+        ])
 
+        if(addMembers.addMember === "Add a new member"){
+         return newEmployee();
+        }else{
+        return writeHtml();
+       }
+        
+}
 
 
 addMemberOrCreateTeam();
+
 
 
 // Function to write the final HTML document in dist folder

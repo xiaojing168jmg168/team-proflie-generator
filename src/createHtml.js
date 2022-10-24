@@ -10,6 +10,7 @@ const generateTeam = (card)=>{
     card
       .filter((employee) => employee.getRole() === "Manager")
       .map((manager) => managerCard(manager))
+      .join("")
   );
   html.push(
     card
