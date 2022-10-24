@@ -107,6 +107,7 @@ employeesArr.push(employee);
 });
 };
 
+//async function prompt add more member or create team
 const addMemberOrCreateTeam = async() =>{
      await newEmployee();
 const addMembers = await inquirer

@@ -2,6 +2,7 @@ const managerCard = require('./managerCard');
 const engineerCard = require('./engineerCard');
 const internCard = require('./internCard');
 
+//filte every single team ,then push to html page
 const generateTeam = (card)=>{
   const html = [];
 
