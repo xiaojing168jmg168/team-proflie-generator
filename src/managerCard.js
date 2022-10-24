@@ -26,3 +26,4 @@ const managerCard = (profile) =>{`
   </div>
 
 `};
+module.exports = managerCard;

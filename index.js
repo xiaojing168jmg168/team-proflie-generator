@@ -5,6 +5,10 @@ const fs = require('fs');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
+const createHtml = require('./src/createHtml.js');
+
+const { inherits } = require('util');
+
 
 //employees array
 let employeesArr = [];
@@ -14,7 +18,7 @@ const questions = [
         type: "list",
         name: "role",
         message: "Which type of team member would you like to add?",
-        choices: ["Manager", "Engineer", "Intern","I don't want to add any more team members."]
+        choices: ["Manager", "Engineer", "Intern"]
         },
         {
         type: "input",
@@ -56,7 +60,7 @@ const internQuestions = [
         {
         type: "input",
         name: "school",
-        message: "What school is the intern from? (Required)"
+        message: "What school is the intern from?"
         }
         ]
 
@@ -78,6 +82,7 @@ inquirer.prompt(managerQuestions)
 officeNumber = response.officeNumber;
 let employee = new Manager(name, id, email, officeNumber);
 employeesArr.push(employee);
+
 });
 }
 
@@ -87,6 +92,7 @@ inquirer.prompt(engineerQuestions)
 github = response.github;
 let employee = new Engineer(name, id, email, github);
 employeesArr.push(employee);
+
 });
 }
 
@@ -94,18 +100,40 @@ else if(role === "Intern"){
 inquirer.prompt(internQuestions)
 .then((response) => {
 school = response.school;
-let employee = new Manager(name, id, email, school);
+let employee = new Intern(name, id, email, school);
 employeesArr.push(employee);
 });
-}
-
-else{
-
-return;
 }
 });
 };
 
-//const profiles = employeesArr.map();
+const addMemberOrCreateTeam = async() =>{
+     await newEmployee();
+const addMembers = await inquirer
+.prompt([
+{
+name: "addMember",
+type: "list",
+choices: ["Add a new member", "Create team"],
+message: "What would you like to do next?"
+}
+])
+if(addMembers.addMember === "Add a new member"){
+return newEmployee();
+}
+return writeHtml();
+}
 
-console.log(newEmployee());
+
+
+addMemberOrCreateTeam();
+
+
+// Function to write the final HTML document in dist folder
+function writeHtml(employeesArr){
+ 
+ fs.writeFile('./dist/team-profile.html', createHtml(employeesArr), (err) => {
+      if (err) throw err;
+      console.log('HTML document successfully created in the /dist folder.');
+    });
+}

@@ -26,3 +26,4 @@ const internCard = (profile) =>{`
   </div>
 
 `};
+module.exports = internCard;

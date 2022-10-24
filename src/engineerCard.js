@@ -26,3 +26,5 @@ const engineerCard = (profile) =>{`
   </div>
 
 `};
+
+module.exports = engineerCard;

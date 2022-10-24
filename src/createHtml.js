@@ -1,4 +1,34 @@
-const cardWrap = (cards) => {`
+const managerCard = require('./managerCard');
+const engineerCard = require('./engineerCard');
+const internCard = require('./internCard');
+
+const generateTeam = (card)=>{
+  const html = [];
+
+  html.push(
+    card
+      .filter((employee) => employee.getRole() === "Manager")
+      .map((manager) => managerCard(manager))
+  );
+  html.push(
+    card
+      .filter((employee) => employee.getRole() === "Engineer")
+      .map((engineer) => engineerCard(engineer))
+      .join("")
+  );
+  html.push(
+    card
+      .filter((employee) => employee.getRole() === "Intern")
+      .map((intern) => internCard(intern))
+      .join("")
+  );
+
+  return html.join("");
+};
+
+
+
+const ceateHtml = (cards) => {`
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +54,7 @@ const cardWrap = (cards) => {`
 
 
   <main class="row d-flex justify-content-center align-items-center">
-  ${cards}
+  ${generateTeam(cards)}
   </main>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script
@@ -37,3 +67,4 @@ const cardWrap = (cards) => {`
 </html>
 
 `};
+module.exports = ceateHtml;
