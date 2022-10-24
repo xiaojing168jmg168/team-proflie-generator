@@ -67,31 +67,31 @@ const newEmployee = async() => {
       
        const answers = await inquirer.prompt(questions);
        
-        //if manager slecte answer these set of questions
+        //if manager selecte answer these set of questions
         if(answers.role === "Manager"){
                 const managerAns = await inquirer.prompt(managerQuestions);
                 let employee = new Manager(answers.name, answers.id, answers.email, managerAns.officeNumber);
                 employeesArr.push(employee);
                
+
                 }
-        //if engineer slecte answer these set of questions
+        //if engineer selecte answer these set of questions
         else if(answers.role === "Engineer"){
                 const engineerAns = await inquirer.prompt(engineerQuestions);
                 let employee = new Engineer(answers.name, answers.id, answers.email, engineerAns.github);
                 employeesArr.push(employee);
                
                 }
-        //if intern slecte answer these set of questions
+        //if intern selecte answer these set of questions
         else if(answers.role === "Intern"){
                 const internAns = await inquirer.prompt(internQuestions);
                 let employee = new Intern(answers.name, answers.id, answers.email, internAns.school);
                 employeesArr.push(employee);
-               
+              
                 }
 console.log(employeesArr);
-
  };
-        
+  
 
 //async function prompt add more member or create team
 const addMemberOrCreateTeam = async() =>{
@@ -107,21 +107,17 @@ const addMemberOrCreateTeam = async() =>{
         ])
 
         if(addMembers.addMember === "Add a new member"){
-         return newEmployee();
-        }else{
-        return writeHtml();
-       }
-        
+//if choice add a new memebr, call itself function
+         return addMemberOrCreateTeam();
+        }else
+        return writeHtml();     
 }
-
-
+//inin function
 addMemberOrCreateTeam();
-
-
 
 // Function to write the final HTML document in dist folder
 function writeHtml(employeesArr){
- 
+
  fs.writeFile('./dist/team-profile.html', createHtml(employeesArr), (err) => {
       if (err) throw err;
       console.log('HTML document successfully created in the /dist folder.');

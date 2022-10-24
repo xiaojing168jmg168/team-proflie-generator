@@ -3,26 +3,23 @@ const engineerCard = require('./engineerCard');
 const internCard = require('./internCard');
 
 //filte every single team ,then push to html page
-const generateTeam = (card)=>{
+const generateTeam = (cards)=>{
   const html = [];
 
   html.push(
-    card
+    cards
       .filter((employee) => employee.getRole() === "Manager")
       .map((manager) => managerCard(manager))
-      .join("")
   );
   html.push(
-    card
+    cards
       .filter((employee) => employee.getRole() === "Engineer")
       .map((engineer) => engineerCard(engineer))
-      .join("")
   );
   html.push(
-    card
+    cards
       .filter((employee) => employee.getRole() === "Intern")
       .map((intern) => internCard(intern))
-      .join("")
   );
 
   return html.join("");
