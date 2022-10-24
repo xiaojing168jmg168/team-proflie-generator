@@ -112,11 +112,11 @@ const addMemberOrCreateTeam = async() =>{
         }else
         return writeHtml();     
 }
-//inin function
+//init function
 addMemberOrCreateTeam();
 
 // Function to write the final HTML document in dist folder
-function writeHtml(employeesArr){
+function writeHtml(){
 
  fs.writeFile('./dist/team-profile.html', createHtml(employeesArr), (err) => {
       if (err) throw err;

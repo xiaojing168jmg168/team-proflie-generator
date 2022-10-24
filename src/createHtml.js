@@ -2,11 +2,12 @@ const managerCard = require('./managerCard');
 const engineerCard = require('./engineerCard');
 const internCard = require('./internCard');
 
-//filte every single team ,then push to html page
+//filter every single employee ,then push to html page
 const generateTeam = (cards)=>{
   const html = [];
-
+if(Array.isArray(cards)){
   html.push(
+
     cards
       .filter((employee) => employee.getRole() === "Manager")
       .map((manager) => managerCard(manager))
@@ -21,7 +22,9 @@ const generateTeam = (cards)=>{
       .filter((employee) => employee.getRole() === "Intern")
       .map((intern) => internCard(intern))
   );
-
+}else{
+console.log('cards is not an array');
+}
   return html.join("");
 };
 
