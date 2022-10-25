@@ -25,7 +25,7 @@ const questions = [
         },
         {
         type: "input",
-        name: " id",
+        name: "id",
         message: "What is this employee id?"
         },
         {
@@ -89,7 +89,7 @@ const newEmployee = async() => {
                 employeesArr.push(employee);
               
                 }
-console.log(employeesArr);
+//console.log(employeesArr);
  };
   
 
