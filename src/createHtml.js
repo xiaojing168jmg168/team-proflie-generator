@@ -42,14 +42,14 @@ return`
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
 
-  <link rel="stylesheet" href="./dist/style.css" />
+  <link rel="stylesheet" href="style.css" />
   <title>Team Profile Generator</title>
 </head>
 
 <body class="container">
 
   <header class="hero row">
-    <h1 class="app-title">Team Profile Generator</h1>
+    <h1 class="app-title">My Team</h1>
    
   </header>
 
