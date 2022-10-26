@@ -20,7 +20,7 @@ return `
         </li>
         <li class="list-group-item">
           <span class="font-weight-bold">GitHub: </span>
-          <a href="https://github.com/${profile.getGitHub()}">${profile.getGitHub()}</a>
+          <a href="https://github.com/${profile.getGitHub()}" target="_blank">${profile.getGitHub()}</a>
         </li>
       </ul>
     </div>

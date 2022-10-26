@@ -15,7 +15,7 @@
 
 
 ## Description
-🔍 This application was created to generate a high-quality, professional Team Profile depending on a series of questions a user answers in their command line using Node.js. The team-profile.html file is created in the dist directory and can be found [here](./dist/team-profile.html).
+🔍 This application was created to generate a high-quality, professional Team Profile depending on a series of questions a user answers in their command line using Node.js. The team-profile.html file is created in the dist directory and can be found [here](./dist/team-profile.html).In the brower, It is a nicely formatted team roster based on user input. When you click on an email address, then your default email program opens and populates the TO field fo the email with the address. When you click on the GitHub username, Then that GitHub profile opens in a new tab.
 
 
 ## Table of Contents
@@ -43,7 +43,7 @@ npm install inquirer ```
 node index.js ```
 
 <video  width="500" height="400" controls>
-  <source src="./utils/readme-generator-1.mp4" type="video/mp4">
+  <source src="./dist/team-profile-generator-1.mp4" type="video/mp4">
 </video>
 
 ## Screenshot
@@ -63,7 +63,7 @@ node index.js ```
 
 
 ## Tests
-``` npm test ```
+``` npm run test ```
 
 ## Questions
 ✋Reach me here:<br/>
