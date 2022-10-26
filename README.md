@@ -43,9 +43,11 @@ npm install inquirer ```
 node index.js ```
 <br/>
 Download video, click [here](./dist/team-profile-generator-1.mp4)
-<video  width="500" height="400" controls>
-  <source src="./dist/team-profile-generator-1.mp4" type="video/mp4">
-</video>
+
+
+https://user-images.githubusercontent.com/110792983/198071177-279bda83-b1d7-4cdc-83ed-c7933b9ee220.mp4
+
+
 
 ## Screenshot
 ![screenshot](./dist/screenshot.png)
