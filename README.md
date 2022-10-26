@@ -41,7 +41,7 @@ npm install inquirer ```
 ## usage
 💻 Run the following command in the command line and answer the prompted questions about you project: <br/> ```
 node index.js ```
-
+Download video,click[here](./dist/team-profile-generator-1.mp4)
 <video  width="500" height="400" controls>
   <source src="./dist/team-profile-generator-1.mp4" type="video/mp4">
 </video>
